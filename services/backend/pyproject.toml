@@ -1,0 +1,15 @@
+[project]
+name = "tc-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "beanie>=1.29.0",
+    "fastapi[standard]>=0.115.6",
+    "passlib>=1.7.4",
+    "pydantic-settings>=2.7.1",
+    "python-dotenv>=1.0.1",
+    "python-jose>=3.3.0",
+    "uvicorn>=0.34.0",
+]

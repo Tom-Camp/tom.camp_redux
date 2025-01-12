@@ -1,0 +1,31 @@
+services:
+  backend:
+    build: ./services/backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./services/backend:/app
+    environment:
+      - MONGODB_URL=mongodb://mongodb:27017/mydatabase
+    depends_on:
+      - mongodb
+
+#  frontend:
+#    build: ./services/frontend
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./services/frontend:/app
+
+# depends_on:
+#      - backend
+
+  mongodb:
+    image: mongo
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mongo_data:
