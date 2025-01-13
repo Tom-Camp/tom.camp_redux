@@ -2,8 +2,9 @@ from contextlib import asynccontextmanager
 from typing import Union
 
 from app.config import settings
+from app.models.journals import Journal
 from app.models.users import User
-from app.routes import user_routes
+from app.routes import journal_routes, user_routes
 from beanie import init_beanie
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -13,7 +14,7 @@ async def init_db():
     client = AsyncIOMotorClient(settings.database_url)
     await init_beanie(
         database=client[settings.database_name],
-        document_models=[User],  # Add all your document models here
+        document_models=[User, Journal],
     )
     return client
 
@@ -32,6 +33,7 @@ app = FastAPI(
     title=settings.app_name,
 )
 
+app.include_router(journal_routes.router, prefix="/api")
 app.include_router(user_routes.router, prefix="/api")
 
 
