@@ -1,8 +1,9 @@
-from beanie import Document
-from pydantic import BaseModel, EmailStr
+from beanie import Document, PydanticObjectId
+from pydantic import BaseModel, EmailStr, Field
 
 
 class User(Document):
+    id: PydanticObjectId = Field(default_factory=PydanticObjectId, alias="_id")
     username: str
     email: str
     hashed_password: str
