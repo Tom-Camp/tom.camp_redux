@@ -1,7 +1,7 @@
 [project]
-name = "tc-api"
+name = "backend"
 version = "0.1.0"
-description = "Add your description here"
+description = "FastAPI backend for tom.camp"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
